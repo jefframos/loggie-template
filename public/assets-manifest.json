@@ -1,0 +1,60 @@
+{
+  "bundles": [
+    {
+      "name": "default",
+      "assets": [
+        {
+          "name": "images/ui/ui.json",
+          "srcs": [
+            "images/ui/ui@1x.json",
+            "images/ui/ui@0.5x.json"
+          ],
+          "data": {
+            "tags": {
+              "tps": true
+            }
+          }
+        },
+        {
+          "name": "style/styles.css",
+          "srcs": [
+            "style/styles.css"
+          ]
+        },
+        {
+          "name": "style/webfonts/Poppins-Bold.ttf",
+          "srcs": [
+            "style/webfonts/Poppins-Bold.woff2"
+          ],
+          "data": {
+            "tags": {
+              "wf": true
+            }
+          }
+        },
+        {
+          "name": "style/webfonts/Poppins-Regular.ttf",
+          "srcs": [
+            "style/webfonts/Poppins-Regular.woff2"
+          ],
+          "data": {
+            "tags": {
+              "wf": true
+            }
+          }
+        },
+        {
+          "name": "style/webfonts/RubikBubbles-Regular.ttf",
+          "srcs": [
+            "style/webfonts/RubikBubbles-Regular.woff2"
+          ],
+          "data": {
+            "tags": {
+              "wf": true
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

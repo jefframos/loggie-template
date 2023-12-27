@@ -1,0 +1,39 @@
+{
+	"name": "phaser3-vite-template",
+	"private": true,
+	"version": "0.0.0",
+	"type": "module",
+	"scripts": {
+		"start": "vite",
+		"build": "vite build",
+		"preview": "vite preview",
+		"assets": "assetpack -c ./tools/assetpack.js && node ./tools/generateFontsCSS.js",
+		"font": " node ./tools/generateFontsCSS.js",
+		"image": "assetpack -c ./tools/image.js"
+	},
+	"devDependencies": {
+		"@assetpack/cli": "^0.8.0",
+		"@assetpack/core": "^0.8.0",
+		"@assetpack/plugin-compress": "~0.3.4",
+		"@assetpack/plugin-ffmpeg": "~0.3.4",
+		"@assetpack/plugin-json": "~0.3.4",
+		"@assetpack/plugin-manifest": "~0.3.4",
+		"@assetpack/plugin-mipmap": "~0.3.4",
+		"@assetpack/plugin-texture-packer": "~0.3.4",
+		"@assetpack/plugin-webfont": "^0.3.4",
+		"@types/signals": "^1.0.4",
+		"eslint": "^8.25.0",
+		"vite": "^3.1.0"
+	},
+	"dependencies": {
+		"@pixi/sound": "^5.2.2",
+		"css": "^3.0.0",
+		"fs": "^0.0.1-security",
+		"fs-extra": "^11.2.0",
+		"gsap": "^3.12.3",
+		"path": "^0.12.7",
+		"pixi.js": "^7.3.2",
+		"save": "^2.9.0",
+		"signals": "^1.0.0"
+	}
+}

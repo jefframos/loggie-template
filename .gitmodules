@@ -1,0 +1,3 @@
+[submodule "loggie"]
+	path = loggie
+	url = https://github.com/jefframos/loggie.git

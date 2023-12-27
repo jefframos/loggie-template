@@ -10,9 +10,3 @@
     font-weight: normal;
     font-style: normal;
 }
-@font-face {
-    font-family: 'rubikbubbles-regular';
-    src: url('../style/webfonts/RubikBubbles-Regular.woff2') format('woff2'); /* Update the format if needed */
-    font-weight: normal;
-    font-style: normal;
-}

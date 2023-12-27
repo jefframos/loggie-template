@@ -1,6 +1,5 @@
-import path from 'path';
 import fs from 'fs';
-
+import path from 'path';
 
 // Function to generate CSS for @font-face
 function generateFontFace(fontPath, fontName) {
@@ -41,7 +40,7 @@ function generateCSS(fontFiles) {
     }).join('');
 
     const cssFileName = 'fonts.css';
-    fs.writeFileSync('./public/style/' + cssFileName, cssContent);
+    fs.writeFileSync('./style/' + cssFileName, cssContent);
 
     console.log(`CSS file generated: ${cssFileName}`);
 }

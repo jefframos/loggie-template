@@ -1,10 +1,12 @@
-import { Application, Assets } from 'pixi.js';
+import * as PIXI from 'pixi.js';
+import * as particles from '@pixi/particle-emitter'
 
+import Utils from 'loggie/core/utils/Utils';
 import { designConfig } from './designConfig';
 import { initAssets } from './assets';
 
 /** The PixiJS app Application instance, shared across the project */
-export const app = new Application<HTMLCanvasElement>({
+export const app = new PIXI.Application<HTMLCanvasElement>({
     resolution: Math.max(window.devicePixelRatio, 2),
     backgroundColor: 0xffff99,
 });
@@ -85,7 +87,61 @@ async function init() {
     // This is used for debugging
     //if (getUrlParam('play') !== null)
     //{
-    await Assets.loadBundle('default');
+
+    await PIXI.Assets.loadBundle('images/preload', (e) => {
+        console.log('progress', e)
+    });
+    console.log('loaded preload complete')
+
+    await PIXI.Assets.loadBundle('default', (e) => {
+        console.log('progress', e)
+    });
+
+    console.log('loaded complete')
+
+
+    const test = new PIXI.Graphics().beginFill(0xFF0000).drawCircle(0, 0, 200)
+    app.stage.addChild(test)
+
+    const test2 = PIXI.Sprite.from('bird-icon')
+    app.stage.addChild(test2)
+    const p = new particles.Emitter(app.stage,
+        {
+            lifetime: {
+                min: 0.5,
+                max: 0.5
+            },
+            frequency: 0.008,
+            spawnChance: 1,
+            particlesPerWave: 1,
+            emitterLifetime: 0.31,
+            maxParticles: 1000,
+            pos: {
+                x: 0,
+                y: 0
+            },
+            behaviors:[
+                {
+                    type: 'spawnShape',
+                    config: {
+                        type: 'torus',
+                        data: {
+                            x: 0,
+                            y: 0,
+                            radius: 10
+                        }
+                    }
+                },
+                {
+                    type: 'textureSingle',
+                    config: {
+                        texture: PIXI.Texture.from('bird-icon')
+                    }
+                }
+            ]
+        });
+
+        p.emit = true
     //await navigation.goToScreen(GameScreen);
     //}
     // else if (getUrlParam('loading') !== null)

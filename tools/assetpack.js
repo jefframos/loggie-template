@@ -1,4 +1,5 @@
 import { compressJpg, compressPng } from '@assetpack/plugin-compress';
+
 import { audio } from '@assetpack/plugin-ffmpeg';
 import { json } from '@assetpack/plugin-json';
 import { pixiManifest } from '@assetpack/plugin-manifest';
@@ -18,11 +19,11 @@ export default {
         texture: pixiTexturePacker({
             texturePacker: {
                 removeFileExtension: true,
-                allowRotation: false
+                allowRotation: true
             },
         }),
         manifest: pixiManifest({
-            output: './public/assets-manifest.json'
+            output: './src/manifest/assets-manifest.json'
         }),
     },
 };

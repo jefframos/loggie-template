@@ -8,7 +8,7 @@ import {
     settings,
 } from 'pixi.js';
 
-import manifest from '../public/assets-manifest.json';
+import manifest from './manifest/assets-manifest.json';
 
 export const resolveJsonUrl = {
     extension: ExtensionType.ResolveParser,

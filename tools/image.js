@@ -2,18 +2,18 @@ import { pixiManifest } from '@assetpack/plugin-manifest';
 import { pixiTexturePacker } from '@assetpack/plugin-texture-packer';
 
 export default {
-    entry: './raw-assets/images/',
-    output: './public/assets/',
-    cache: true,
+    entry: './raw-assets',
+    output: './public/',
+    cache: false,
     plugins: {
         texture: pixiTexturePacker({
             texturePacker: {
                 removeFileExtension: true,
-                allowRotation: false
+                allowRotation: true
             },
         }),
         manifest: pixiManifest({
-            output: './public/assets/assets-manifest.json'
+            output: './src/manifest/assets-manifest.json'
         }),
     },
 };

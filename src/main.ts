@@ -1,6 +1,7 @@
 import * as PIXI from 'pixi.js';
 import * as particles from '@pixi/particle-emitter'
 
+import MainScreenManager from './screen/MainScreenManager';
 import Utils from 'loggie/core/utils/Utils';
 import { designConfig } from './designConfig';
 import { initAssets } from './assets';
@@ -101,57 +102,25 @@ async function init() {
 
 
     const test = new PIXI.Graphics().beginFill(0xFF0000).drawCircle(0, 0, 200)
-    app.stage.addChild(test)
+    //app.stage.addChild(test)
 
     const test2 = PIXI.Sprite.from('bird-icon')
-    app.stage.addChild(test2)
-    const p = new particles.Emitter(app.stage,
-        {
-            lifetime: {
-                min: 0.5,
-                max: 0.5
-            },
-            frequency: 0.008,
-            spawnChance: 1,
-            particlesPerWave: 1,
-            emitterLifetime: 0.31,
-            maxParticles: 1000,
-            pos: {
-                x: 0,
-                y: 0
-            },
-            behaviors:[
-                {
-                    type: 'spawnShape',
-                    config: {
-                        type: 'torus',
-                        data: {
-                            x: 0,
-                            y: 0,
-                            radius: 10
-                        }
-                    }
-                },
-                {
-                    type: 'textureSingle',
-                    config: {
-                        texture: PIXI.Texture.from('bird-icon')
-                    }
-                }
-            ]
-        });
+   // app.stage.addChild(test2)
 
-        p.emit = true
-    //await navigation.goToScreen(GameScreen);
-    //}
-    // else if (getUrlParam('loading') !== null)
-    // {
-    //     await navigation.goToScreen(LoadScreen);
-    // }
-    // else
-    // {
-    //     await navigation.goToScreen(TitleScreen);
-    // }
+    const screenManager = new MainScreenManager();
+    app.stage.addChild(screenManager)
+    // Set up the ticker
+    const ticker = app.ticker;
+
+    // Add a tick event handler
+    ticker.add((delta) => {
+        // Your tick event logic goes here
+        // This function will be called on each frame update
+        screenManager.update(delta * 0.01)
+    });
+
+    // Start the rendering loop
+    ticker.start();
 }
 
 // Init everything

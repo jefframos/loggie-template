@@ -5,8 +5,12 @@ import PhysicsEntity from "loggie/core/physics/PhysicsEntity";
 import RenderModule from "loggie/core/modules/RenderModule";
 import WorldGameView from "loggie/core/view/WorldGameView";
 import Loggie from "loggie/core/Loggie";
+import GameObject from "loggie/core/gameObject/GameObject";
+import RigidBody from "loggie/core/physics/RigidBody";
 
-export default class TestEntity extends PhysicsEntity {
+export default class TestEntity2 extends GameObject {
+    private gameView: WorldGameView;
+    public rigidBody: RigidBody;
     constructor() {
         super();
 
@@ -24,19 +28,23 @@ export default class TestEntity extends PhysicsEntity {
     build() {
         super.build();
 
-        this.buildCircle(0, 0, 20)
+        //this.buildCircle(0, 0, 20)
 
-        this.layerCategory = Layer.Player
-        this.layerMask = Layer.PlayerCollision
+        this.rigidBody = this.addComponent(RigidBody) as RigidBody;
+        this.rigidBody.buildCircle(20)
+        this.rigidBody.layerCategory = Layer.Enemy
+        this.rigidBody.layerMask = Layer.EnemyCollision
+
         console.log('build', this)
     }
-    update(delta) {
+    update(delta:number) {
         super.update(delta)
 
-        this.physics.velocity.x = Math.sin(Loggie.Time) * 5000;
-    }
+        this.rigidBody.physics.velocity.x = Math.cos(Loggie.Time) * 5000;
 
-    collisionEnter(target){
+        console.log('ADD theck collision events on the gameobject instead the rigidbody')
+    }
+    collisionEnter(target:GameObject){
         console.log('collide', target)
     }
 }

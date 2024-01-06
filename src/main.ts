@@ -2,7 +2,6 @@ import * as PIXI from 'pixi.js';
 import * as particles from '@pixi/particle-emitter'
 
 import MainScreenManager from './screen/MainScreenManager';
-import Utils from 'loggie/core/utils/Utils';
 import { designConfig } from './designConfig';
 import { initAssets } from './assets';
 
